@@ -17,5 +17,5 @@ int main() {
 	Book b3("Oliver Dann", "The Depth", "Action", "Action", 2017, { "action" }, 1.7, 23);
 	Book b4("Mark Irivine", "Hell and Heaven", "Drama", "Book about the lifecycle", 2007, { "drama", "hell", "heaven" }, 2.7, 13);
 	Book b5("Tamara Neil", "Fancy book", "Comedy", "Comedy books", 2011, { "fancy tag" }, 5.6, 14);
-	
+	std::cout << "test";
 }
