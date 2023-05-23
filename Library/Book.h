@@ -1,23 +1,40 @@
 #pragma once
-
-
-
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
+#include "Serializable.h"
 
-class Book
+using std::string;
+using std::vector;
+
+//default empty tag list
+//vector<string> tags = {};
+
+class Book : Serializable
 {
 private:
-	std::string Author;
-	std::string Title;
-	std::string Genre;
-	std::string Description;
-	unsigned year;
-	std::vector<std::string> tags;
-	double rating;
-	unsigned id;
+	string _author;
+	string _title;
+	string _genre;
+	string _description;
+	unsigned _year;
+	vector<string> _tags;
+	double _rating;
+	unsigned _id;
 public:
+	Book();
+	Book(const string& author,const string& title, const string& genre, const string& desc, const unsigned year,const vector<string>& tags, const double rating, unsigned id);
+	
+	
+	bool serialize() override final;
+	bool deserialize() override final { return 0; };
 
+	
+
+	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);
+	//friend std::istream& operator>>(std::istream& in, Book& obj);	
 };
+
 
