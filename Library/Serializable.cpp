@@ -1,1 +1,20 @@
 #include "Serializable.h"
+
+bool Serializable::writeStringToBinary(string& str, ofstream& out)
+{
+    size_t size = str.size();
+    int pos = out.tellp();
+    out.write((char*)&size, sizeof(size));
+    out.write((char*) & str[0], size);
+    return (out.good());
+}
+
+bool Serializable::readStringFromBinary(string& str, ifstream& in)
+{
+    size_t size;
+    in.read((char*) & size, sizeof(size_t));
+    int pos = in.tellg();
+    str.resize(size);
+    in.read((char*) & str[0], size);
+    return (in.good());
+}

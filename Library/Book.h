@@ -29,8 +29,10 @@ public:
 	
 	
 	bool serialize() override final;
-	bool deserialize() override final { return 0; };
+	bool deserialize() override final;
 
+	void printDetails() const;
+	void printForAll() const;
 	
 
 	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);

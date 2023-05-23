@@ -32,3 +32,5 @@ Library/.vs/Library/v17/.suo
 *.sln
 Library/.vs/Library/v17/.suo
 *.db
+*.user
+*.ipch
