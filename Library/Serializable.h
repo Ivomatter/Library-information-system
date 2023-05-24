@@ -18,7 +18,7 @@ public:
 	bool readStringFromBinary(string& str, ifstream& in);
 
 
-	virtual bool serialize() = 0;
-	virtual bool deserialize() = 0;
+	virtual bool serialize(ofstream& out) = 0;
+	virtual bool deserialize(ifstream& out) = 0;
 };
 

@@ -5,6 +5,7 @@
 #include <fstream>
 
 #include "Serializable.h"
+#include "Constants.h"
 
 using std::string;
 using std::vector;
@@ -23,13 +24,17 @@ private:
 	vector<string> _tags;
 	double _rating;
 	unsigned _id;
+
+	void copy(const Book& other);
 public:
 	Book();
 	Book(const string& author,const string& title, const string& genre, const string& desc, const unsigned year,const vector<string>& tags, const double rating, unsigned id);
+	Book& operator=(const Book& other);
 	
-	
-	bool serialize() override final;
-	bool deserialize() override final;
+	static bool generateBooksFile();
+
+	bool serialize(ofstream& out) override final;
+	bool deserialize(ifstream& in) override final;
 
 	void printDetails() const;
 	void printForAll() const;
