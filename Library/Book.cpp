@@ -136,4 +136,10 @@ void Book::printForAll() const
 			<< "Description: " << _description << '\n';
 }
 
+void Book::checkForDetails(const unsigned id) const
+{
+	if (id == _id)
+		printDetails();
+}
+
 

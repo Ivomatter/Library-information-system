@@ -9,11 +9,13 @@
 
 
 int main() {
-	Book::generateBooksFile();
+	//Book::generateBooksFile();
 
 	FileController control;
 	control.loadBooks();
-	control.showAllBooks();
+	//control.showAllBooks();
+	control.showBookDetails(27);
+	control.showBookDetails(13);
 
 	
 

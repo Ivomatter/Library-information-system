@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream> 
 #include <vector>
 
@@ -16,6 +17,9 @@ ostream& operator<<(ostream& os, const vector<T>& v)
     os << "\n";
     return os;
 }
+
+
+void printNewline();
 
 
 

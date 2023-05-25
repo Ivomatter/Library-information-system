@@ -7,6 +7,7 @@
 #include "Serializable.h"
 #include "Constants.h"
 
+
 using std::string;
 using std::vector;
 
@@ -38,6 +39,8 @@ public:
 
 	void printDetails() const;
 	void printForAll() const;
+
+	void checkForDetails(const unsigned id) const;
 	
 
 	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);

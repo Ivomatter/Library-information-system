@@ -27,10 +27,19 @@ bool FileController::loadBooks()
 	return in.good();
 }
 
-void FileController::showAllBooks()
+void FileController::showAllBooks() const
 {
 	for (Book book : _bookList) {
 		book.printForAll();
-		std::cout << '\n';
+		printNewline();
 	}
+}
+
+void FileController::showBookDetails(const unsigned id)
+{
+	for (size_t i = 0; i < _bookList.size(); i++)
+	{
+		_bookList[i].checkForDetails(id);
+	}
+	printNewline();
 }
