@@ -1,21 +1,25 @@
 #pragma once
-#include "stdio.h"
-
+#include <sstream>
+#include <cstdlib>
 
 #include "FileController.h"
 #include "Constants.h"
-#include <readline/readline.h>
 
 
-
-
+	
 class Application
 {
 private:
-	char* _input;
+	string _input;
+	vector<string> command;
 	FileController control;
 	//User currentUser;
 public:
 	Application();
-};
 
+	void executeCommand();
+	void booksCommand(vector<string> command);
+
+	void showHelpMessage(string commandError);
+	void noIdMessage();
+};

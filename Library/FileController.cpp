@@ -35,11 +35,14 @@ void FileController::showAllBooks() const
 	}
 }
 
-void FileController::showBookDetails(const unsigned id)
+bool FileController::showBookDetails(const unsigned id)
 {
 	for (size_t i = 0; i < _bookList.size(); i++)
 	{
-		_bookList[i].checkForDetails(id);
+		if (_bookList[i].checkForDetails(id))
+			return true;
 	}
-	printNewline();
+	return false;
+
 }
+

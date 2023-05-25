@@ -1,4 +1,5 @@
 #include <fstream>
+#include <cstdlib>
 
 #include "Application.h"
 #include "Book.h"
@@ -8,30 +9,19 @@
 #include "FileController.h"
 
 
+
 int main() {
 	//Book::generateBooksFile();
 
-	FileController control;
-	control.loadBooks();
-	//control.showAllBooks();
-	control.showBookDetails(27);
-	control.showBookDetails(13);
+	//FileController control;
+	//control.loadBooks();
+	////control.showAllBooks();
+	//control.showBookDetails(27);
+	//control.showBookDetails(13);
+
+	Application app;
 
 	
-
-	/*Book b1;
-	Book b2;
-
-	ifstream in(BOOKS_FILE, std::ios::binary);
-	b1.deserialize(in);
-	b2.deserialize(in);
-	in.close();
 	
-	b1.printForAll();
-	b2.printForAll();
 
-	Book b3;
-	b3 = b1;
-
-	b3.printForAll();*/
 }

@@ -15,6 +15,6 @@ public:
 	bool loadBooks();
 	void showAllBooks() const;
 
-	void showBookDetails(const unsigned id);
+	bool showBookDetails(const unsigned id);
 };
 

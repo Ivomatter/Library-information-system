@@ -40,7 +40,7 @@ public:
 	void printDetails() const;
 	void printForAll() const;
 
-	void checkForDetails(const unsigned id) const;
+	bool checkForDetails(const unsigned id) const;
 	
 
 	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);
