@@ -5,9 +5,20 @@ Application::Application()
 	control.loadBooks();
 	//control.loadUsers();
 
-	_input = "";
-	while (_input != EXIT_STRING) {
-		std::cin >> _input;
 
+	while (true) {
+
+		//Displays prompt and reads user input
+		_input = readline("> ");
+
+		////Checks for EOF
+		if (!_input) {
+			break;
+		}
+
+		printf("%s", _input);
+
+
+		free(_input);
 	}
 }

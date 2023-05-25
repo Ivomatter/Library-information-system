@@ -1,14 +1,18 @@
 #pragma once
+#include "stdio.h"
+
 
 #include "FileController.h"
 #include "Constants.h"
-#include "readline/readline.h"
-#include "readline/history.h"
+#include <readline/readline.h>
+
+
+
 
 class Application
 {
 private:
-	string _input;
+	char* _input;
 	FileController control;
 	//User currentUser;
 public:
