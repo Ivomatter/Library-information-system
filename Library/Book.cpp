@@ -42,7 +42,7 @@ Book& Book::operator=(const Book& other)
 	return *this;
 }
 
-bool Book::generateBooksFile()
+bool Book::generateBooksFile(string fileName)
 {
 	Book b1("John Michaels", "COOL BOOK", "COMEDY", "The greatest book ever", 2010, { "super", "cool reading", "book" }, 4.5, 27);
 	Book b2("Andy Rillins", "Book about Magic", "Adventure", "Magic", 2002, { "magic", "friendship" }, 9.5, 24);
@@ -50,7 +50,7 @@ bool Book::generateBooksFile()
 	Book b4("Mark Irivine", "Hell and Heaven", "Drama", "Book about the lifecycle", 2007, { "drama", "hell", "heaven" }, 2.7, 13);
 	Book b5("Tamara Neil", "Fancy book", "Comedy", "Comedy books", 2011, { "fancy tag" }, 5.6, 14);
 
-	ofstream out(BOOKS_FILE, std::ios::out | std::ios::binary);
+	ofstream out(fileName, std::ios::out | std::ios::binary);
 	b1.serialize(out);
 	b2.serialize(out);
 	b3.serialize(out);
@@ -62,12 +62,13 @@ bool Book::generateBooksFile()
 
 bool Book::serialize(ofstream& out)
 {
-	if (!(writeStringToBinary(_author, out)
+	if (!(writeStringToBinary(BOOK_OBJECT_SIGNATURE, out)
+		&& writeStringToBinary(_author, out)
 		&& writeStringToBinary(_title, out)
 		&& writeStringToBinary(_genre, out)
 		&& writeStringToBinary(_description, out))) {
 			throw "Failed to write to file!";
-			return -1;
+			return false;
 		}
 	
 	out.write((char*)&_year, sizeof(_year));
@@ -82,6 +83,7 @@ bool Book::serialize(ofstream& out)
 
 	out.write((char*)&_rating, sizeof(_rating));
 	out.write((char*)&_id, sizeof(_id));
+	return out.good();
 }
 
 bool Book::deserialize(ifstream& in)
@@ -91,7 +93,7 @@ bool Book::deserialize(ifstream& in)
 		&& readStringFromBinary(_genre, in)
 		&& readStringFromBinary(_description, in))) {
 			throw "Failed to read from file!";
-			return -1;
+			return false;
 	}
 
 	in.read((char*)&_year, sizeof(_year));
@@ -103,12 +105,13 @@ bool Book::deserialize(ifstream& in)
 	{
 		if (!readStringFromBinary(_tags[i], in)) {
 			throw "Failed to read from file!";
-			return -1;
+			return false;
 		}
 	}
 
 	in.read((char*)&_rating, sizeof(_rating));
 	in.read((char*)&_id, sizeof(_id));
+	return in.good();
 }
 
 void Book::printDetails() const

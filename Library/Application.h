@@ -10,16 +10,21 @@
 class Application
 {
 private:
-	string _input;
-	vector<string> command;
-	FileController control;
+	vector<string> _command;
+	FileController _booksController;
+	FileController _usersController;	
 	//User currentUser;
 public:
-	Application();
+	Application() : _booksController(BOOKS_FILE), _usersController(USERS_FILE) {};
+
+	void run();
 
 	void executeCommand();
-	void booksCommand(vector<string> command);
 
-	void showHelpMessage(string commandError);
-	void noIdMessage();
+	void booksCommand(vector<string> command);
+	void helpCommand(vector<string> command);
+
+	void showBooksInfo(string bookId);
+
+	void showUnknownCommandPrompt();
 };

@@ -11,7 +11,7 @@
 
 
 int main() {
-	//Book::generateBooksFile();
+	Book::generateBooksFile(BOOKS_FILE);
 
 	//FileController control;
 	//control.loadBooks();
@@ -20,6 +20,13 @@ int main() {
 	//control.showBookDetails(13);
 
 	Application app;
+	app.run();
+	/*ifstream in(BOOKS_FILE, std::ios::binary);
+	Serializable* book = Serializable::readSerializable(in);
+	in.close();
+
+	book->printDetails();*/
+
 
 	
 	

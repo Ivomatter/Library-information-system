@@ -14,11 +14,17 @@ using std::ifstream;
 class Serializable
 {
 public:
-	bool writeStringToBinary(string& str, ofstream& out);
-	bool readStringFromBinary(string& str, ifstream& in);
+	static bool writeStringToBinary(const string& str, ofstream& out);
+	static bool readStringFromBinary(string& str, ifstream& in);
 
+	static Serializable* readSerializable(ifstream& in);
 
 	virtual bool serialize(ofstream& out) = 0;
 	virtual bool deserialize(ifstream& out) = 0;
+
+	virtual void printDetails() const = 0;
+	virtual void printForAll() const = 0;
+
+	virtual bool checkForDetails(const unsigned id) const = 0;
 };
 

@@ -1,89 +1,122 @@
 #include "Application.h"
 
-Application::Application()
+
+
+void Application::run()
 {
-	control.loadBooks();
+	string input;
+	_booksController.openFile();
 	//control.loadUsers();
 
 
 	while (true) {
 
 
-		getline(std::cin, _input);
-		std::stringstream ss(_input);
+		getline(std::cin, input);
+		std::stringstream ss(input);
 
-		while (getline(ss, _input, ' ')) {
-			command.push_back(_input);
+		while (getline(ss, input, ' ')) {
+			_command.push_back(input);
 		}
 
-		/*for (string word : command) {
-			std::cout << word << ' ';
-		}*/
-
-		if (!command.empty())
+		if (!_command.empty())
 			executeCommand();
-		
-		command.clear();
+
+		_command.clear();
 	}
 }
 
 void Application::executeCommand()
 {
-	if (command[0] == "exit")
+	if (_command[0] == "exit")
 		exit(0);
-	else if (command[0] == "books") {
-		booksCommand(command);
+	else if (_command[0] == "books") {
+		booksCommand(_command);
 	}
-	else{
-		std::cout << "Unknown command. For a list of commands, use \"help\".";
+	else if (_command[0] == "help") {
+		helpCommand(_command);
 	}
-	
+	else {
+		showUnknownCommandPrompt();
+	}
+
 	printNewline();
 	return;
 }
 
-void Application::booksCommand(vector<string> command)
+void Application::booksCommand(vector<string> _command)
 {
-	if (command.size() == 1) {
-		showHelpMessage(command[0]);
+	//If the command is only "Books", print help message.
+	if (_command.size() == 1) {
+		showUnknownCommandPrompt();
 		return;
 	}
-	if (command[1] == "all") {
-		control.showAllBooks();
+	if (_command[1] == "all") {
+		_booksController.showAllBooks();
 		return;
 	}
-	if (command.size() < 3) {
-		showHelpMessage(command[0]);
-	}
-	else if (command[1] == "info") {
 
-		string strId = command[2];
-		char* endTest;
-		unsigned id = strtol(command[2].c_str(), &endTest, 10);
-
-		if (*endTest != '\0') {
-			noIdMessage();
+	/*if (_command.size() < 3) {
+		showUnknownCommandPrompt();
+	}*/
+	if (_command[1] == "info") {
+		if (_command.size() == 2) {
+			std::cout << "Please specify book id.";
 			return;
 		}
-
-		if (!control.showBookDetails(id)) {
-			noIdMessage();
-			return;
-		}
+		showBooksInfo(_command[2]);	
 	}
 	else {
-		showHelpMessage(command[0]);
+		showUnknownCommandPrompt();
 	}
 	
 }
 
-void Application::noIdMessage() {
-	std::cout << "No book found with such id.";
-	printNewline();
+void Application::helpCommand(vector<string> command)
+{
+	if (command.size() == 1) {
+		std::cout << "List of avaliable commands:" << '\n';
+		std::cout << ">login" << '\n';
+		std::cout << ">logout" << '\n';
+		std::cout << '\n';
+		std::cout << ">open\n- opens a file for editing or creates a file for editing" << '\n';
+		std::cout << ">save\n- saves contents to opened file" << '\n';
+		std::cout << ">saveas\n- save contents to specified file" << '\n';
+		std::cout << ">close\n- closes file" << '\n';
+		std::cout << '\n';
+		std::cout << ">books all\n- displays information about all loaded books" << '\n';
+		std::cout << ">books info <id>\n- displays information about book with id" << '\n';
+		std::cout << ">books find <option> <option_string>\n- displays book info by criteria" << '\n';
+		std::cout << ">books sort <option> <option_string>\n- sorts by option and order respectively"<< '\n';
+		std::cout << '\n';
+		std::cout << ">users add <user> <password>\n- creates new user" << '\n';
+		std::cout << ">users remove <user>\n- deletes user" << '\n';
+		std::cout << "exit\n- exits the program" << '\n';
+		return;
+	}
 }
 
-void Application::showHelpMessage(string commandError)
+void Application::showBooksInfo(string bookId)
 {
-	std::cout << "Incorrect syntax. For help, use \"help " << commandError << "\".";
-	printNewline();
+	
+	char* endTest;
+	unsigned id = strtol(bookId.c_str(), &endTest, 10);
+
+	if (*endTest != '\0') {
+		std::cout << "No book found with such id.";
+		printNewline();
+		return;
+	}
+
+	if (!_booksController.showBookDetails(id)) {
+		std::cout << "No book found with such id.";
+		printNewline();
+		return;
+	}
 }
+
+void Application::showUnknownCommandPrompt()
+{
+	std::cout << "Unknown command. For a list of commands, use \"help\".";
+}
+

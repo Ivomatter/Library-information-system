@@ -14,7 +14,7 @@ using std::vector;
 //default empty tag list
 //vector<string> tags = {};
 
-class Book : Serializable
+class Book : public Serializable
 {
 private:
 	string _author;
@@ -32,15 +32,15 @@ public:
 	Book(const string& author,const string& title, const string& genre, const string& desc, const unsigned year,const vector<string>& tags, const double rating, unsigned id);
 	Book& operator=(const Book& other);
 	
-	static bool generateBooksFile();
+	static bool generateBooksFile(string fileName);
 
 	bool serialize(ofstream& out) override final;
 	bool deserialize(ifstream& in) override final;
 
-	void printDetails() const;
-	void printForAll() const;
+	void printDetails() const override final;
+	void printForAll() const override final;
 
-	bool checkForDetails(const unsigned id) const;
+	bool checkForDetails(const unsigned id) const override final;
 	
 
 	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);
