@@ -27,6 +27,11 @@ public:
 
 	void freeItemList();
 
-	size_t getFileSize(ifstream& in);
+	bool add(Serializable* newItem);
+
+	size_t getFileSize(ifstream& in) const;
+	size_t size()const ;
+
+	bool setUserList(vector<User>& userList) const;
 };
 

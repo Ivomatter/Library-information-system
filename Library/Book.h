@@ -42,7 +42,9 @@ public:
 
 	bool checkForDetails(const unsigned id) const override final;
 	
+	string getName() override final { return _author; };
 
+	void setAll();
 	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);
 	//friend std::istream& operator>>(std::istream& in, Book& obj);	
 };

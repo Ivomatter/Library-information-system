@@ -4,6 +4,8 @@
 
 void Application::run()
 {
+	_usersController.openFile(USERS_FILE);
+
 	string input;
 
 	while (true) {
@@ -19,12 +21,19 @@ void Application::run()
 
 		_command.clear();
 	}
+	_usersController.close();
 }
 
 void Application::executeCommand()
 {
 	if (_command[0] == "exit")
 		exit(0);
+	else if (_command[0] == "login") {
+		loginCommand();
+	}
+	else if (_command[0] == "logout") {
+		logoutCommand();
+	}
 	else if (_command[0] == "books") {
 		booksCommand(_command);
 	}
@@ -50,10 +59,60 @@ void Application::executeCommand()
 	return;
 }
 
+void Application::loginCommand()
+{
+	if (_isUserLoggedIn) {
+		std::cout << "Already logged in!";
+		return;
+	}
+	string user;
+	string password;
+
+	std::cout << "Enter username: ";
+	std::cin >> user;
+	std::cout << "Enter password: ";
+	std::cin >> password;
+
+	password = sha512(SALT_PREFIX + password + SALT_SUFFIX);
+
+	vector<User> usersList;
+	_usersController.setUserList(usersList);
+
+	for (size_t i = 0; i < _usersController.size(); ++i)
+	{
+		if (usersList[i].getName() == user) {
+			if (usersList[i].getPassword() == password) {
+				std::cout << "Successfully logged in!";
+				_isUserLoggedIn = true;
+				_currentUser = usersList[i];
+			}
+			else {
+				std::cout << "Wrong password!";
+			}
+			return;
+		}
+	}
+	std::cout << "Invalid credentials!";
+}
+
+void Application::logoutCommand()
+{
+	if (!_isUserLoggedIn) {
+		std::cout << "No active user.";
+		return;
+	}
+	_currentUser.clear();
+	_isUserLoggedIn = false;
+}
+
 void Application::booksCommand(vector<string>& _command) {
 
 	if (_command.size() == 1) {
 		showUnknownCommandPrompt();
+		return;
+	}
+	if (!_isUserLoggedIn) {
+		std::cout << "Access denied.";
 		return;
 	}
 	if (!_booksController.isOpen()) {
@@ -64,13 +123,21 @@ void Application::booksCommand(vector<string>& _command) {
 		_booksController.showAllBooks();
 		return;
 	}
-	if (_command[1] == "info") {
+	else if (_command[1] == "info") {
 		if (_command.size() == 2) {
 			std::cout << "Please specify book id.";
 			return;
 		}
 		showBooksInfo(_command[2]);	
 	}
+	else if (_command[1] == "add") {
+		if (!_isUserLoggedIn) {
+			std::cout << "Access denied.";
+			return;
+		}
+		
+	}
+
 	showUnknownCommandPrompt();
 }
 

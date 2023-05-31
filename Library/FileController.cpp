@@ -67,6 +67,34 @@ void FileController::freeItemList()
 	_fileItemList.clear();
 }
 
+bool FileController::add(Serializable* newItem)
+{
+	if (!_isFileOpen) {
+		return false;
+	}
+	try {
+		_fileItemList.push_back(newItem);
+	}
+	catch (...) {
+		std::cout << "Incorrect item type.";
+	}
+	return true;
+}
+
+bool FileController::setUserList(vector<User>& userList) const
+{
+	ifstream in(_fileName, std::ios::binary);
+
+	for (size_t i = 0; i < this->size(); ++i) {
+		User temp;
+		User::readUser(in, temp);
+		userList.push_back(temp);
+	}
+
+	in.close();
+	return in.good();;
+}
+
 void FileController::showAllBooks() const
 {
 	for (Serializable* book : _fileItemList) {
@@ -87,11 +115,16 @@ bool FileController::showBookDetails(const unsigned id)
 
 }
 
-size_t FileController::getFileSize(ifstream& in)
+size_t FileController::getFileSize(ifstream& in) const
 {
 	in.seekg(0, SEEK_END);
 	size_t fileSize = in.tellg();
 	in.seekg(0, SEEK_SET);
 	return fileSize;
+}
+
+size_t FileController::size() const
+{
+	return _fileItemList.size();
 }
 

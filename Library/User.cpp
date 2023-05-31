@@ -1,4 +1,21 @@
 #include "User.h"
+#include "./OOP-sha512/SHA512.h"
+
+
+void User::copy(const User& other)
+{
+    _userName = other._userName;
+    _password = other._password;
+    _isAdmin = other._isAdmin;
+}
+
+User& User::operator=(const User& other)
+{
+    if (this != &other) {
+        copy(other);
+    }
+    return *this;
+}
 
 void User::generateUsersFile()
 {
@@ -37,6 +54,18 @@ bool User::deserialize(ifstream& in)
     return in.good();
 }
 
+bool User::readUser(ifstream& in, User& user)
+{
+    string serializable;
+    Serializable::readStringFromBinary(serializable, in);
+    if (serializable != USER_OBJECT_SIGNATURE) {
+        throw "Invalid file contents";
+        return false;
+    }
+    user.deserialize(in);
+    return in.good();
+}
+
 void User::printDetails() const 
 {
     this->printForAll();
@@ -49,4 +78,11 @@ void User::printForAll() const
 {
     std::cout << _userName << '\n';
     std::cout << _password << '\n';
+}
+
+void User::clear()
+{
+    _userName.clear();
+    _password.clear();
+    _isAdmin = false;
 }

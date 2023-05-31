@@ -26,5 +26,7 @@ public:
 	virtual void printForAll() const = 0;
 
 	virtual bool checkForDetails(const unsigned id) const = 0;
+
+	virtual string getName() = 0;
 };
 

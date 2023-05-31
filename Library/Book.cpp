@@ -148,4 +148,40 @@ bool Book::checkForDetails(const unsigned id) const
 	return false;
 }
 
+void Book::setAll()
+{
+	Book newBook;
+	string tempStr;
+	unsigned tempNum;
+	double tempDouble;
 
+	std::cout << "Author: ";
+	std::cin >> _author;
+
+	std::cout << "Title: ";
+	std::cin >> _title;
+
+	std::cout << "Genre: ";
+	std::cin >> _genre;
+
+	std::cout << "Description: ";
+	std::cin >> _description;
+
+	std::cout << "Year: ";
+	std::cin >> _year;
+
+	std::cout << "Number of tags: ";
+	std::cin >> tempNum;
+	for (size_t i = 0; i < tempNum; ++i)
+	{
+		std::cout << "Tag #" << i << ": ";
+		std::cin >> tempStr;
+		_tags.push_back(tempStr);
+	}
+
+	std::cout << "Rating: ";
+	std::cin >> _rating;
+
+	std::cout << "Id: ";
+	std::cin >> _id;
+}
