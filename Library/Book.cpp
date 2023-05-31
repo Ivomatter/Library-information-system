@@ -150,38 +150,93 @@ bool Book::checkForDetails(const unsigned id) const
 
 void Book::setAll()
 {
-	Book newBook;
+	//TODO: some extra validation for numbers
 	string tempStr;
-	unsigned tempNum;
-	double tempDouble;
+	long tempNum;
 
 	std::cout << "Author: ";
-	std::cin >> _author;
+	getline(std::cin, _author);
 
 	std::cout << "Title: ";
-	std::cin >> _title;
+	getline(std::cin, _title);
 
 	std::cout << "Genre: ";
-	std::cin >> _genre;
+	getline(std::cin, _genre);
 
 	std::cout << "Description: ";
-	std::cin >> _description;
+	getline(std::cin, _description);
 
 	std::cout << "Year: ";
-	std::cin >> _year;
+	while (true) {
+		if (std::cin >> tempNum) {
+			//valid number
+			if (tempNum < 0) {
+				std::cout << "Please enter a valid year.";
+				continue;
+			}
+			_year = tempNum;
+			break;
+		}
+		else {
+			//invalid number
+			std::cout << "Invalid input! Please try again: ";
+			std::cin.clear();
+			while (std::cin.get() != '\n');
+		}
+	}
 
 	std::cout << "Number of tags: ";
-	std::cin >> tempNum;
+	while (true) {
+		if (std::cin >> tempNum) {
+			//valid number
+			break;
+		}
+		else {
+			//invalid number
+			std::cout << "Invalid input! Please try again: ";
+			std::cin.clear();
+			while (std::cin.get() != '\n');
+		}
+	}
+
 	for (size_t i = 0; i < tempNum; ++i)
 	{
 		std::cout << "Tag #" << i << ": ";
-		std::cin >> tempStr;
+		getline(std::cin, tempStr);
 		_tags.push_back(tempStr);
 	}
 
 	std::cout << "Rating: ";
-	std::cin >> _rating;
+	while (true) {
+		if (std::cin >> _rating) {
+			//valid number
+			break;
+		}
+		else {
+			//invalid number
+			std::cout << "Invalid input! Please try again: ";
+			std::cin.clear();
+			while (std::cin.get() != '\n');
+		}
+	}
 
+	//TODO: Extra validation to check if a book with corresponding ID already exists.
 	std::cout << "Id: ";
-	std::cin >> _id;
+	while (true) {
+		if (std::cin >> tempNum) {
+			//valid number
+			if (tempNum < 0) {
+				std::cout << "Please enter a valid id.";
+				continue;
+			}
+			_id = tempNum;
+			break;
+		}
+		else {
+			//invalid number
+			std::cout << "Invalid input! Please try again: ";
+			std::cin.clear();
+			while (std::cin.get() != '\n');
+		}
+	}
 }

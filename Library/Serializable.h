@@ -28,5 +28,7 @@ public:
 	virtual bool checkForDetails(const unsigned id) const = 0;
 
 	virtual string getName() = 0;
+
+	virtual void setAll() = 0;
 };
 

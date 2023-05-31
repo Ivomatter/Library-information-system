@@ -131,13 +131,15 @@ void Application::booksCommand(vector<string>& _command) {
 		showBooksInfo(_command[2]);	
 	}
 	else if (_command[1] == "add") {
-		if (!_isUserLoggedIn) {
+		if (!_currentUser.isAdmin()) {
 			std::cout << "Access denied.";
 			return;
 		}
-		
+		Serializable* temp = SerializableFactory::generate(BOOK_OBJECT_SIGNATURE);
+		temp->setAll();
+		_booksController.add(temp);
+		return;
 	}
-
 	showUnknownCommandPrompt();
 }
 

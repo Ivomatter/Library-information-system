@@ -44,7 +44,7 @@ public:
 	
 	string getName() override final { return _author; };
 
-	void setAll();
+	void setAll() override final;
 	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);
 	//friend std::istream& operator>>(std::istream& in, Book& obj);	
 };

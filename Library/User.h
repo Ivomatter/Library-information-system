@@ -45,6 +45,8 @@ public:
 	string getPassword() { return _password; };
 	bool isAdmin() { return _isAdmin; };
 
+	void setAll() override final{};
+
 	void clear();
 	
 };
