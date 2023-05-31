@@ -5,13 +5,8 @@
 void Application::run()
 {
 	string input;
-	_booksController.openFile();
-	//control.loadUsers();
-
 
 	while (true) {
-
-
 		getline(std::cin, input);
 		std::stringstream ss(input);
 
@@ -36,29 +31,39 @@ void Application::executeCommand()
 	else if (_command[0] == "help") {
 		helpCommand(_command);
 	}
-	else {
+	else if (_command[0] == "open") {
+		openCommand(_command);
+	}
+	else if (_command[0] == "close") {
+		_booksController.close();
+	}
+	else if (_command[0] == "save") {
+		_booksController.save();
+	}
+	else if (_command[0] == "saveas") {
+		saveAsCommand(_command);
+	}
+	else{
 		showUnknownCommandPrompt();
 	}
-
 	printNewline();
 	return;
 }
 
-void Application::booksCommand(vector<string> _command)
-{
-	//If the command is only "Books", print help message.
+void Application::booksCommand(vector<string>& _command) {
+
 	if (_command.size() == 1) {
 		showUnknownCommandPrompt();
+		return;
+	}
+	if (!_booksController.isOpen()) {
+		std::cout << "No book file loaded.";
 		return;
 	}
 	if (_command[1] == "all") {
 		_booksController.showAllBooks();
 		return;
 	}
-
-	/*if (_command.size() < 3) {
-		showUnknownCommandPrompt();
-	}*/
 	if (_command[1] == "info") {
 		if (_command.size() == 2) {
 			std::cout << "Please specify book id.";
@@ -66,13 +71,10 @@ void Application::booksCommand(vector<string> _command)
 		}
 		showBooksInfo(_command[2]);	
 	}
-	else {
-		showUnknownCommandPrompt();
-	}
-	
+	showUnknownCommandPrompt();
 }
 
-void Application::helpCommand(vector<string> command)
+void Application::helpCommand(vector<string>& command)
 {
 	if (command.size() == 1) {
 		std::cout << "List of avaliable commands:" << '\n';
@@ -95,6 +97,35 @@ void Application::helpCommand(vector<string> command)
 		return;
 	}
 }
+
+void Application::openCommand(vector<string>& command)
+{
+	if (command.size() == 1) {
+		std::cout << "Please specify file." << std::endl;
+		return;
+	}
+	_booksController.openFile(command[1]);
+	if (!_booksController.isOpen()) {
+		std::cout << "Failed to open file." << std::endl;
+		return;
+	}
+	std::cout << "Successfully opened " << command[1] << std::endl;
+}
+
+void Application::closeCommand()
+{
+	_booksController.close();
+}
+
+void Application::saveAsCommand(vector<string>& command)
+{
+	if (command.size() == 1) {
+		std::cout << "Please specify file.";
+		return;
+	}
+	_booksController.saveAs(command[1]);
+}
+
 
 void Application::showBooksInfo(string bookId)
 {

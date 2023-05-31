@@ -21,8 +21,11 @@ public:
 
 	void executeCommand();
 
-	void booksCommand(vector<string> command);
-	void helpCommand(vector<string> command);
+	void booksCommand(vector<string>& command);
+	void helpCommand(vector<string>& command);
+	void openCommand(vector<string>& command);
+	void closeCommand();
+	void saveAsCommand(vector<string>& command);
 
 	void showBooksInfo(string bookId);
 

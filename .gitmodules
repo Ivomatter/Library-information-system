@@ -1,0 +1,9 @@
+[submodule "Library/SHA"]
+	path = Library/SHA
+	url = https://github.com/pr0f3ss/SHA
+[submodule "SHA"]
+	path = SHA
+	url = https://github.com/pr0f3ss/SHA
+[submodule "Library/OOP-sha512"]
+	path = Library/OOP-sha512
+	url = https://github.com/Ivomatter/OOP-sha512

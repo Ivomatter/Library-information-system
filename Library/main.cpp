@@ -7,27 +7,21 @@
 #include "Helpers.h"
 #include "Serializable.h"
 #include "FileController.h"
-
-
+#include "SHA512.h"
 
 int main() {
-	Book::generateBooksFile(BOOKS_FILE);
 
-	//FileController control;
-	//control.loadBooks();
-	////control.showAllBooks();
-	//control.showBookDetails(27);
-	//control.showBookDetails(13);
+	/*Application app;
+	app.run();*/
 
-	Application app;
-	app.run();
-	/*ifstream in(BOOKS_FILE, std::ios::binary);
-	Serializable* book = Serializable::readSerializable(in);
-	in.close();
+	string hi = "Hello!";
 
-	book->printDetails();*/
-
-
+	string output = sha512(hi);
+	string output2 = sha512("abc" + hi + "def");
+	std::cout << output << '\n';
+	std::cout << output2;
+	
+	return 0;
 	
 	
 

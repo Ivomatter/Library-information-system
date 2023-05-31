@@ -2,11 +2,15 @@
 
 
 
-bool FileController::openFile()
+bool FileController::openFile(string fileToOpen)
 {
+	_fileName = fileToOpen;
 	ifstream in(_fileName, std::ios::out | std::ios::binary);
 	if (!in) {
-		throw "Unable to open file!";
+		std::cout << fileToOpen << " not found. Creating file..." << std::endl;
+		ofstream out(_fileName, std::ios::out | std::ios::trunc);
+		out.close();;
+		return false; //returns false as file is not open yet.
 	}
 
 	size_t fileSize = getFileSize(in);	
@@ -18,6 +22,7 @@ bool FileController::openFile()
 		_fileItemList.push_back(temp);
 	}
 	in.close();
+	_isFileOpen = in.good();
 	return in.good();
 }
 
@@ -28,7 +33,7 @@ bool FileController::save() const
 
 bool FileController::saveAs(string targetFileName) const
 {
-	ofstream out(_fileName, std::ios::binary);
+	ofstream out(targetFileName, std::ios::binary | std::ios::trunc);
 	if (!out) {
 		throw "Failed to load file!";
 		return false;
@@ -48,6 +53,13 @@ bool FileController::close()
 	}
 	_isFileOpen = false;
 	freeItemList();
+	std::cout << "Closed " << _fileName << std::endl;
+	return true;
+}
+
+bool FileController::isOpen() const
+{
+	return _isFileOpen;
 }
 
 void FileController::freeItemList()

@@ -18,10 +18,12 @@ public:
 	void showAllBooks() const;
 	bool showBookDetails(const unsigned id);
 
-	bool openFile();
+	bool openFile(string fileToOpen);
 	bool save() const;
 	bool saveAs(string targetFileName) const;
 	bool close();
+
+	bool isOpen() const;
 
 	void freeItemList();
 

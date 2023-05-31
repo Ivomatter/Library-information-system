@@ -1,10 +1,14 @@
 #pragma once
 
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
 
+
 #include "Serializable.h"
+#include "Constants.h"
+#include "Helpers.h"
 
 using std::string;
 
@@ -20,12 +24,13 @@ public:
 	User(string name, string password) :			   _userName(name), _password(password), _isAdmin(false) {};
 	User(string name, string password, bool isAdmin) : _userName(name), _password(password), _isAdmin(isAdmin) {};
 	
+	static void generateUsersFile();
 	//TODO: Define the following override functions for class User
 	bool serialize(ofstream& out) override final;
 	bool deserialize(ifstream& in) override final;
 
-	void printDetails() const override final {};
-	void printForAll() const override final {};
+	void printDetails() const override final;
+	void printForAll() const override final;
 
 	bool checkForDetails(const unsigned id) const override final { return true; };
 };
