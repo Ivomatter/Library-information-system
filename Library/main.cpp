@@ -9,6 +9,8 @@
 #include "FileController.h"
 #include "./OOP-sha512/SHA512.h"
 
+
+
 int main() {
 	//User::generateUsersFile();
 	Application app;
@@ -17,11 +19,5 @@ int main() {
 	Serializable* user = Serializable::readSerializable(in);
 	user->printDetails();*/
 	
-	/*unsigned jeff = 0;
-	std::cin >> jeff;
-	std::cout << jeff;*/
 	return 0;
-	
-	
-
 }

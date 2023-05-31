@@ -95,10 +95,10 @@ bool FileController::setUserList(vector<User>& userList) const
 	return in.good();;
 }
 
-void FileController::showAllBooks() const
+void FileController::showAll() const
 {
-	for (Serializable* book : _fileItemList) {
-		book->printForAll();
+	for (Serializable* item : _fileItemList) {
+		item->printForAll();
 		printNewline();
 	}
 }

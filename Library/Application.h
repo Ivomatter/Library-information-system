@@ -31,6 +31,7 @@ public:
 	void openCommand(vector<string>& command);
 	void closeCommand();
 	void saveAsCommand(vector<string>& command);
+	void userCommand(vector<string>& command);
 
 	void showBooksInfo(string bookId);
 

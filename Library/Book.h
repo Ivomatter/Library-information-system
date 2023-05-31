@@ -29,7 +29,9 @@ private:
 	void copy(const Book& other);
 public:
 	Book();
+	Book(const string& author, const string& title, const string& genre, const string& desc) : _author(author), _title(title), _genre(genre), _description(desc) { _year = 2023; _rating = 0; _id = -1; };
 	Book(const string& author,const string& title, const string& genre, const string& desc, const unsigned year,const vector<string>& tags, const double rating, unsigned id);
+
 	Book& operator=(const Book& other);
 	
 	static bool generateBooksFile(string fileName);

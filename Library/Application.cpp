@@ -52,7 +52,10 @@ void Application::executeCommand()
 	else if (_command[0] == "saveas") {
 		saveAsCommand(_command);
 	}
-	else{
+	else if (_command[0] == "users") {
+		userCommand(_command);
+	}
+	else {
 		showUnknownCommandPrompt();
 	}
 	printNewline();
@@ -103,6 +106,7 @@ void Application::logoutCommand()
 	}
 	_currentUser.clear();
 	_isUserLoggedIn = false;
+	std::cout << "Logged out successfully.";
 }
 
 void Application::booksCommand(vector<string>& _command) {
@@ -120,7 +124,7 @@ void Application::booksCommand(vector<string>& _command) {
 		return;
 	}
 	if (_command[1] == "all") {
-		_booksController.showAllBooks();
+		_booksController.showAll();
 		return;
 	}
 	else if (_command[1] == "info") {
@@ -195,10 +199,39 @@ void Application::saveAsCommand(vector<string>& command)
 	_booksController.saveAs(command[1]);
 }
 
+void Application::userCommand(vector<string>& command)
+{
+	if (!_currentUser.isAdmin()) {
+		std::cout << "Access denied.";
+		return;
+	}
+	if (command.size() == 1) {
+		showUnknownCommandPrompt();
+		return;
+	}
+	if (command[1] == "all") {
+		_usersController.showAll();
+		return;
+	}
+	if (command[1] == "add") {
+		if (command.size() < 2) {
+			std::cout << "Insufficient parameters";
+			return;
+		}
+		
+		vector<string> argv = { command[2], command[3]};
+		Serializable* temp = SerializableFactory::generateWithParameters(USER_OBJECT_SIGNATURE, argv);
+		_usersController.add(temp);
+		ofstream out(USERS_FILE, std::ios::binary | std::ios::app);
+		temp->serialize(out);
+		std::cout << "Successfully added user!";
+	}
+	return;
+}
+
 
 void Application::showBooksInfo(string bookId)
 {
-	
 	char* endTest;
 	unsigned id = strtol(bookId.c_str(), &endTest, 10);
 

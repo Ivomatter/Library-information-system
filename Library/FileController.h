@@ -15,7 +15,7 @@ public:
 	FileController() : _isFileOpen(false) {};
 	FileController(string fileName) : _isFileOpen(false), _fileName(fileName) {};
 	
-	void showAllBooks() const;
+	void showAll() const;
 	bool showBookDetails(const unsigned id);
 
 	bool openFile(string fileToOpen);

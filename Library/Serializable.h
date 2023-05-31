@@ -9,8 +9,6 @@ using std::ifstream;
 
 //const string FILE_NAME = "example.txt";
 
-
-
 class Serializable
 {
 public:
