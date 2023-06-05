@@ -2,6 +2,10 @@
 #include "User.h"
 #include "Book.h"
 
+const int MIN_USER_ARGS = 2;
+const int MIN_BOOK_ARGS = 4;
+
+
 Serializable* SerializableFactory::generate(const string signature)
 {
     Serializable* serializable = nullptr;

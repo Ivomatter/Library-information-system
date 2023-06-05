@@ -60,6 +60,17 @@ bool Book::generateBooksFile(string fileName)
 	return out.good();
 }
 
+bool Book::readBook(ifstream& in, Book& book) {
+	string serializable;
+	Serializable::readStringFromBinary(serializable, in);
+	if (serializable != BOOK_OBJECT_SIGNATURE) {
+		throw "Invalid file contents";
+		return false;
+	}
+	book.deserialize(in);
+	return in.good();
+}
+
 bool Book::serialize(ofstream& out)
 {
 	if (!(writeStringToBinary(BOOK_OBJECT_SIGNATURE, out)

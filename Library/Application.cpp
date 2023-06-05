@@ -5,6 +5,7 @@
 const char ENTER = 13;
 const char BACK_SPACE = 8;
 const char TAB = '\t';
+const string INSUFFICIENT_PARAMTETERS_MESSAGE = "Insufficient parameters.";
 
 void Application::run()
 {
@@ -61,6 +62,9 @@ void Application::executeCommand()
 	}
 	else if (_command[0] == "users") {
 		userCommand(_command);
+	}
+	else if (_command[0] == "find") {
+		findCommand(_command);
 	}
 	else {
 		showUnknownCommandPrompt();
@@ -179,6 +183,48 @@ void Application::helpCommand(vector<string>& command)
 	}
 }
 
+void Application::findCommand(vector<string>& command) {
+	if (command.size() < 3) {
+		std::cout << INSUFFICIENT_PARAMTETERS_MESSAGE;
+		return;
+	}
+
+	vector<Book> bookList;
+	_booksController.setBookList(bookList);
+	string toFind = "";
+	for (size_t i = 2; i < command.size(); i++)
+	{
+		toFind += command[i];
+		if (i + 1 != command.size())
+			toFind += ' ';
+	}
+
+	if (command[1] == "title") {
+		for (Book book : bookList) {
+			if (book.getTitle() == toFind)
+				book.printDetails();
+		}
+	}
+	else if (command[1] == "author") {
+		for (Book book : bookList) {
+			if (book.getAuthor() == toFind)
+				book.printDetails();
+		}
+	}
+	else if (command[1] == "tag") {
+		for (Book book : bookList) {
+			for (string tag : book.getTags()) {
+				if (tag == toFind) {
+					book.printDetails();
+					break;
+				}
+			}
+		}
+	}
+	else
+		std::cout << "Invalid option for find.";
+}
+
 void Application::openCommand(vector<string>& command)
 {
 	if (command.size() == 1) {
@@ -223,7 +269,7 @@ void Application::userCommand(vector<string>& command)
 	}
 	if (command[1] == "add") {
 		if (command.size() < 2) {
-			std::cout << "Insufficient parameters";
+			std::cout << INSUFFICIENT_PARAMTETERS_MESSAGE;
 			return;
 		}
 		

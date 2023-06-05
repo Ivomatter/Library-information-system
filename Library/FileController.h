@@ -33,5 +33,6 @@ public:
 	size_t size()const ;
 
 	bool setUserList(vector<User>& userList) const;
+	bool setBookList(vector<Book>& bookList) const;
 };
 

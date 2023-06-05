@@ -35,6 +35,7 @@ public:
 	Book& operator=(const Book& other);
 	
 	static bool generateBooksFile(string fileName);
+	static bool readBook(ifstream& in, Book& temp);
 
 	bool serialize(ofstream& out) override final;
 	bool deserialize(ifstream& in) override final;
@@ -44,7 +45,10 @@ public:
 
 	bool checkForDetails(const unsigned id) const override final;
 	
-	string getName() override final { return _author; };
+	string getName() override final { return _author; }
+	string getAuthor() const { return _author; }
+	string getTitle() const { return _title; }
+	vector<string> getTags() const { return _tags; }
 
 	void setAll() override final;
 	//friend std::ostream& operator<<(std::ostream& out, const Book& obj);
