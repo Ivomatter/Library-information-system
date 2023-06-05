@@ -17,3 +17,4 @@ const string SALT_SUFFIX = "@*V*,.[b{";
 const string BOOKS_FILE = "books.dat";
 const string USERS_FILE = "users.dat";
 const string EXIT_STRING = "exit";
+

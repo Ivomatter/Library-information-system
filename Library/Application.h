@@ -36,4 +36,6 @@ public:
 	void showBooksInfo(string bookId);
 
 	void showUnknownCommandPrompt();
+
+	string getPass();
 };

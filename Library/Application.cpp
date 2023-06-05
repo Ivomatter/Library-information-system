@@ -1,6 +1,10 @@
 #include "Application.h"
 #include <conio.h>
+#include <algorithm>
 
+const char ENTER = 13;
+const char BACK_SPACE = 8;
+const char TAB = '\t';
 
 void Application::run()
 {
@@ -26,6 +30,9 @@ void Application::run()
 
 void Application::executeCommand()
 {
+	// Let the initial command be case insensitive by making it lowercase
+	transform(_command[0].begin(), _command[0].end(), _command[0].begin(), ::tolower);
+	// 
 	if (_command[0] == "exit")
 		exit(0);
 	else if (_command[0] == "login") {
@@ -75,15 +82,8 @@ void Application::loginCommand()
 	std::cout << "Enter username: ";
 	std::cin >> user;
 	std::cout << "Enter password: ";
-	// Code that makes it so that password appears as asterix when writing it
-	ch = _getch();
-	while (ch != 13) {
-		password.push_back(ch);
-		std::cout << '*';
-		ch = _getch();
-	}
-	std::cout << std::endl;
-	//
+	password = getPass();
+
 	password = sha512(SALT_PREFIX + password + SALT_SUFFIX);
 
 	vector<User> usersList;
@@ -261,3 +261,25 @@ void Application::showUnknownCommandPrompt()
 	std::cout << "Unknown command. For a list of commands, use \"help\".";
 }
 
+
+string Application::getPass() {
+	int ch;
+	string password;
+	ch = _getch();
+	while (ch != ENTER) {
+		if (ch == BACK_SPACE) {
+			if (password.size() > 0) {
+				password.pop_back();
+				std::cout << "\b \b";
+			}
+		}
+		else if (ch == TAB) {}
+		else {
+			password.push_back(ch);
+			std::cout << '*';
+		}
+		ch = _getch();
+	}
+	std::cout << std::endl;
+	return password;
+}
