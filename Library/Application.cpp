@@ -1,5 +1,5 @@
 #include "Application.h"
-
+#include <conio.h>
 
 
 void Application::run()
@@ -68,14 +68,22 @@ void Application::loginCommand()
 		std::cout << "Already logged in!";
 		return;
 	}
+	int ch;
 	string user;
 	string password;
 
 	std::cout << "Enter username: ";
 	std::cin >> user;
 	std::cout << "Enter password: ";
-	std::cin >> password;
-
+	// Code that makes it so that password appears as asterix when writing it
+	ch = _getch();
+	while (ch != 13) {
+		password.push_back(ch);
+		std::cout << '*';
+		ch = _getch();
+	}
+	std::cout << std::endl;
+	//
 	password = sha512(SALT_PREFIX + password + SALT_SUFFIX);
 
 	vector<User> usersList;
