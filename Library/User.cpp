@@ -19,7 +19,7 @@ User& User::operator=(const User& other)
 
 void User::generateUsersFile()
 {
-    User u1("admin", "admin", true);
+    User u1("admin", "i<3c++", true);
     User u2("guest", "guest");
 
     ofstream out(USERS_FILE, std::ios::out | std::ios::binary);

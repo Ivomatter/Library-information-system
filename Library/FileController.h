@@ -26,13 +26,15 @@ public:
 	bool isOpen() const;
 
 	void freeItemList();
+	void reopen();
 
 	bool add(Serializable* newItem);
 
+	vector<Serializable*>& getItemList() { return _fileItemList; };
 	size_t getFileSize(ifstream& in) const;
 	size_t size()const ;
 
-	bool setUserList(vector<User>& userList) const;
+	//bool setUserList(vector<User>& userList) const;
 	bool setBookList(vector<Book>& bookList) const;
 };
 

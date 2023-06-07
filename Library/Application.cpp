@@ -63,9 +63,6 @@ void Application::executeCommand()
 	else if (_command[0] == "users") {
 		userCommand(_command);
 	}
-	else if (_command[0] == "find") {
-		findCommand(_command);
-	}
 	else {
 		showUnknownCommandPrompt();
 	}
@@ -90,24 +87,9 @@ void Application::loginCommand()
 
 	password = sha512(SALT_PREFIX + password + SALT_SUFFIX);
 
-	vector<User> usersList;
-	_usersController.setUserList(usersList);
+	UserRegister userRegister(_usersController.getItemList(), USERS_FILE);
 
-	for (size_t i = 0; i < _usersController.size(); ++i)
-	{
-		if (usersList[i].getName() == user) {
-			if (usersList[i].getPassword() == password) {
-				std::cout << "Successfully logged in!";
-				_isUserLoggedIn = true;
-				_currentUser = usersList[i];
-			}
-			else {
-				std::cout << "Wrong password!";
-			}
-			return;
-		}
-	}
-	std::cout << "Invalid credentials!";
+	_isUserLoggedIn = userRegister.loginCheck(user, password, _currentUser);
 }
 
 void Application::logoutCommand()
@@ -156,6 +138,10 @@ void Application::booksCommand(vector<string>& _command) {
 		_booksController.add(temp);
 		return;
 	}
+	else if (_command[1] == "find") {
+		findCommand(_command);
+	}
+	else
 	showUnknownCommandPrompt();
 }
 
@@ -189,40 +175,8 @@ void Application::findCommand(vector<string>& command) {
 		return;
 	}
 
-	vector<Book> bookList;
-	_booksController.setBookList(bookList);
-	string toFind = "";
-	for (size_t i = 2; i < command.size(); i++)
-	{
-		toFind += command[i];
-		if (i + 1 != command.size())
-			toFind += ' ';
-	}
-
-	if (command[1] == "title") {
-		for (Book book : bookList) {
-			if (book.getTitle() == toFind)
-				book.printDetails();
-		}
-	}
-	else if (command[1] == "author") {
-		for (Book book : bookList) {
-			if (book.getAuthor() == toFind)
-				book.printDetails();
-		}
-	}
-	else if (command[1] == "tag") {
-		for (Book book : bookList) {
-			for (string tag : book.getTags()) {
-				if (tag == toFind) {
-					book.printDetails();
-					break;
-				}
-			}
-		}
-	}
-	else
-		std::cout << "Invalid option for find.";
+	Library bookLibrary(_booksController.getItemList(), BOOKS_FILE);
+	bookLibrary.findBook(command);
 }
 
 void Application::openCommand(vector<string>& command)
@@ -267,19 +221,28 @@ void Application::userCommand(vector<string>& command)
 		_usersController.showAll();
 		return;
 	}
-	if (command[1] == "add") {
+	else if (command[1] == "add") {
 		if (command.size() < 2) {
 			std::cout << INSUFFICIENT_PARAMTETERS_MESSAGE;
 			return;
 		}
-		
-		vector<string> argv = { command[2], command[3]};
+
+		vector<string> argv = { command[2], command[3] };
 		Serializable* temp = SerializableFactory::generateWithParameters(USER_OBJECT_SIGNATURE, argv);
 		_usersController.add(temp);
 		ofstream out(USERS_FILE, std::ios::binary | std::ios::app);
 		temp->serialize(out);
 		std::cout << "Successfully added user!";
 	}
+	else if (command[1] == "remove") {
+		UserRegister userRegister(_usersController.getItemList(), USERS_FILE);
+		userRegister.removeUser(command[2]);
+		_usersController.close();
+		_usersController.openFile(USERS_FILE);
+	}
+	else
+		showUnknownCommandPrompt();
+	
 	return;
 }
 

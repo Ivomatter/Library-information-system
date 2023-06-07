@@ -5,6 +5,8 @@
 #include "FileController.h"
 #include "Constants.h"
 #include "SerializableFactory.h"
+#include "UserRegister.h"
+#include "Library.h"
 
 
 	
