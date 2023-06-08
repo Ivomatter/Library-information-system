@@ -1,5 +1,7 @@
 #pragma once
 
+//Handles the file loading of any Serializable inherited class
+
 #include "Book.h"
 #include "User.h"
 #include "Helpers.h"
@@ -33,8 +35,5 @@ public:
 	vector<Serializable*>& getItemList() { return _fileItemList; };
 	size_t getFileSize(ifstream& in) const;
 	size_t size()const ;
-
-	//bool setUserList(vector<User>& userList) const;
-	bool setBookList(vector<Book>& bookList) const;
 };
 

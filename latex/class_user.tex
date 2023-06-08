@@ -1,0 +1,163 @@
+\doxysection{User Class Reference}
+\hypertarget{class_user}{}\label{class_user}\index{User@{User}}
+Inheritance diagram for User\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_user_ae9653ca93cb356594819a442fb4ec9d3}\label{class_user_ae9653ca93cb356594819a442fb4ec9d3} 
+{\bfseries User} (string name, string password)
+\item 
+\Hypertarget{class_user_a3517c97e54090f036609de2357764aa5}\label{class_user_a3517c97e54090f036609de2357764aa5} 
+{\bfseries User} (string name, string password, bool is\+Admin)
+\item 
+\Hypertarget{class_user_a00fe82353b0ee8cf6abb1088d36e125b}\label{class_user_a00fe82353b0ee8cf6abb1088d36e125b} 
+\mbox{\hyperlink{class_user}{User}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_user}{User}} \&other)
+\item 
+bool \mbox{\hyperlink{class_user_a48ea10cafc26fe557bcda6cf526894fb}{serialize}} (ofstream \&out) override final
+\item 
+bool \mbox{\hyperlink{class_user_a663155f3d5fa5711afd22920451acb9b}{deserialize}} (ifstream \&in) override final
+\item 
+void \mbox{\hyperlink{class_user_a1f7b42277e019a7540e255e9dede1051}{print\+Details}} () const override final
+\item 
+void \mbox{\hyperlink{class_user_a34acdf024200fc93295ae71a9e83fd0b}{print\+For\+All}} () const override final
+\item 
+bool \mbox{\hyperlink{class_user_ad86e5aa8e7ab242928c00bda573bea9d}{check\+For\+Details}} (const unsigned id) const override final
+\item 
+string \mbox{\hyperlink{class_user_a8be081e94bb96dd93686f2a829ac6b6d}{get\+Name}} () override final
+\item 
+\Hypertarget{class_user_a090eb9ee354cc25b2e8240b714b39d64}\label{class_user_a090eb9ee354cc25b2e8240b714b39d64} 
+string {\bfseries get\+Password} ()
+\item 
+\Hypertarget{class_user_ace19848c26b4b131c6f7b48d7b146ffc}\label{class_user_ace19848c26b4b131c6f7b48d7b146ffc} 
+bool {\bfseries is\+Admin} ()
+\item 
+void \mbox{\hyperlink{class_user_a2c15fb2718eb9c4a1a2436aed7be6874}{set\+All}} () override final
+\item 
+\Hypertarget{class_user_abb4e84ddd2aa5e33a25f5610b87a5e13}\label{class_user_abb4e84ddd2aa5e33a25f5610b87a5e13} 
+void {\bfseries clear} ()
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_serializable_a361feae023f1de6890eb374e6edd0a01}\label{class_serializable_a361feae023f1de6890eb374e6edd0a01} 
+virtual bool {\bfseries serialize} (ofstream \&out)=0
+\item 
+\Hypertarget{class_serializable_afb0aa7e3ba5b305e4b428a96fdc628c4}\label{class_serializable_afb0aa7e3ba5b305e4b428a96fdc628c4} 
+virtual bool {\bfseries deserialize} (ifstream \&out)=0
+\item 
+\Hypertarget{class_serializable_afdabd994134f22ea91b41f38121b72ae}\label{class_serializable_afdabd994134f22ea91b41f38121b72ae} 
+virtual void {\bfseries print\+Details} () const =0
+\item 
+\Hypertarget{class_serializable_a07c68c8a449ce6b34118108a8a93caae}\label{class_serializable_a07c68c8a449ce6b34118108a8a93caae} 
+virtual void {\bfseries print\+For\+All} () const =0
+\item 
+\Hypertarget{class_serializable_ad8c872c96dda95d4c5e941fb09afed85}\label{class_serializable_ad8c872c96dda95d4c5e941fb09afed85} 
+virtual bool {\bfseries check\+For\+Details} (const unsigned id) const =0
+\item 
+\Hypertarget{class_serializable_a26eddbaa9a9023ba47fa6189eba41c30}\label{class_serializable_a26eddbaa9a9023ba47fa6189eba41c30} 
+virtual string {\bfseries get\+Name} ()=0
+\item 
+\Hypertarget{class_serializable_a3efd9fbcb63785f9a6907405de5051bf}\label{class_serializable_a3efd9fbcb63785f9a6907405de5051bf} 
+virtual void {\bfseries set\+All} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_user_a4a913ea215aa101591b453bb55b40cfa}\label{class_user_a4a913ea215aa101591b453bb55b40cfa} 
+static void {\bfseries generate\+Users\+File} ()
+\item 
+\Hypertarget{class_user_a5d56917cdac8b435a1a3520117390349}\label{class_user_a5d56917cdac8b435a1a3520117390349} 
+static bool {\bfseries read\+User} (ifstream \&in, \mbox{\hyperlink{class_user}{User}} \&user)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_serializable}{Serializable}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bfseries write\+String\+To\+Binary} (const string \&str, ofstream \&out)
+\item 
+static bool {\bfseries read\+String\+From\+Binary} (string \&str, ifstream \&in)
+\item 
+static \mbox{\hyperlink{class_serializable}{Serializable}} \texorpdfstring{$\ast$}{*} {\bfseries read\+Serializable} (ifstream \&in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_user_ad86e5aa8e7ab242928c00bda573bea9d}\label{class_user_ad86e5aa8e7ab242928c00bda573bea9d} 
+\index{User@{User}!checkForDetails@{checkForDetails}}
+\index{checkForDetails@{checkForDetails}!User@{User}}
+\doxysubsubsection{\texorpdfstring{checkForDetails()}{checkForDetails()}}
+{\footnotesize\ttfamily bool User\+::check\+For\+Details (\begin{DoxyParamCaption}\item[{const unsigned}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_user_a663155f3d5fa5711afd22920451acb9b}\label{class_user_a663155f3d5fa5711afd22920451acb9b} 
+\index{User@{User}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!User@{User}}
+\doxysubsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily bool User\+::deserialize (\begin{DoxyParamCaption}\item[{ifstream \&}]{in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_user_a8be081e94bb96dd93686f2a829ac6b6d}\label{class_user_a8be081e94bb96dd93686f2a829ac6b6d} 
+\index{User@{User}!getName@{getName}}
+\index{getName@{getName}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string User\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_user_a1f7b42277e019a7540e255e9dede1051}\label{class_user_a1f7b42277e019a7540e255e9dede1051} 
+\index{User@{User}!printDetails@{printDetails}}
+\index{printDetails@{printDetails}!User@{User}}
+\doxysubsubsection{\texorpdfstring{printDetails()}{printDetails()}}
+{\footnotesize\ttfamily void User\+::print\+Details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_user_a34acdf024200fc93295ae71a9e83fd0b}\label{class_user_a34acdf024200fc93295ae71a9e83fd0b} 
+\index{User@{User}!printForAll@{printForAll}}
+\index{printForAll@{printForAll}!User@{User}}
+\doxysubsubsection{\texorpdfstring{printForAll()}{printForAll()}}
+{\footnotesize\ttfamily void User\+::print\+For\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_user_a48ea10cafc26fe557bcda6cf526894fb}\label{class_user_a48ea10cafc26fe557bcda6cf526894fb} 
+\index{User@{User}!serialize@{serialize}}
+\index{serialize@{serialize}!User@{User}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily bool User\+::serialize (\begin{DoxyParamCaption}\item[{ofstream \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_user_a2c15fb2718eb9c4a1a2436aed7be6874}\label{class_user_a2c15fb2718eb9c4a1a2436aed7be6874} 
+\index{User@{User}!setAll@{setAll}}
+\index{setAll@{setAll}!User@{User}}
+\doxysubsubsection{\texorpdfstring{setAll()}{setAll()}}
+{\footnotesize\ttfamily void User\+::set\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+User.\+h\item 
+User.\+cpp\end{DoxyCompactItemize}

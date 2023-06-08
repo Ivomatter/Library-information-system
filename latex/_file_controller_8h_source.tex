@@ -1,0 +1,45 @@
+\doxysection{File\+Controller.\+h}
+\hypertarget{_file_controller_8h_source}{}\label{_file_controller_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Book.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}User.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Helpers.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_file_controller}{FileController}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{string}\ \_fileName;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_isFileOpen;}
+\DoxyCodeLine{00012\ \ \ \ \ vector<Serializable*>\ \_fileItemList;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_file_controller}{FileController}}()\ :\ \_isFileOpen(\textcolor{keyword}{false})\ \{\};}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_file_controller}{FileController}}(\textcolor{keywordtype}{string}\ fileName)\ :\ \_isFileOpen(\textcolor{keyword}{false}),\ \_fileName(fileName)\ \{\};}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ showAll()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ showBookDetails(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ openFile(\textcolor{keywordtype}{string}\ fileToOpen);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ save()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ saveAs(\textcolor{keywordtype}{string}\ targetFileName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ close();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ isOpen()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ freeItemList();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ reopen();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ add(\mbox{\hyperlink{class_serializable}{Serializable}}*\ newItem);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ vector<Serializable*>\&\ getItemList()\ \{\ \textcolor{keywordflow}{return}\ \_fileItemList;\ \};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getFileSize(ifstream\&\ in)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size()\textcolor{keyword}{const}\ ;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//bool\ setUserList(vector<User>\&\ userList)\ const;}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ setBookList(vector<Book>\&\ bookList)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+
+\end{DoxyCode}

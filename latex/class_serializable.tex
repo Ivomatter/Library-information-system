@@ -1,0 +1,50 @@
+\doxysection{Serializable Class Reference}
+\hypertarget{class_serializable}{}\label{class_serializable}\index{Serializable@{Serializable}}
+Inheritance diagram for Serializable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_serializable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_serializable_a361feae023f1de6890eb374e6edd0a01}\label{class_serializable_a361feae023f1de6890eb374e6edd0a01} 
+virtual bool {\bfseries serialize} (ofstream \&out)=0
+\item 
+\Hypertarget{class_serializable_afb0aa7e3ba5b305e4b428a96fdc628c4}\label{class_serializable_afb0aa7e3ba5b305e4b428a96fdc628c4} 
+virtual bool {\bfseries deserialize} (ifstream \&out)=0
+\item 
+\Hypertarget{class_serializable_afdabd994134f22ea91b41f38121b72ae}\label{class_serializable_afdabd994134f22ea91b41f38121b72ae} 
+virtual void {\bfseries print\+Details} () const =0
+\item 
+\Hypertarget{class_serializable_a07c68c8a449ce6b34118108a8a93caae}\label{class_serializable_a07c68c8a449ce6b34118108a8a93caae} 
+virtual void {\bfseries print\+For\+All} () const =0
+\item 
+\Hypertarget{class_serializable_ad8c872c96dda95d4c5e941fb09afed85}\label{class_serializable_ad8c872c96dda95d4c5e941fb09afed85} 
+virtual bool {\bfseries check\+For\+Details} (const unsigned id) const =0
+\item 
+\Hypertarget{class_serializable_a26eddbaa9a9023ba47fa6189eba41c30}\label{class_serializable_a26eddbaa9a9023ba47fa6189eba41c30} 
+virtual string {\bfseries get\+Name} ()=0
+\item 
+\Hypertarget{class_serializable_a3efd9fbcb63785f9a6907405de5051bf}\label{class_serializable_a3efd9fbcb63785f9a6907405de5051bf} 
+virtual void {\bfseries set\+All} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_serializable_a2116beaebd29911ed244cec61492bc0b}\label{class_serializable_a2116beaebd29911ed244cec61492bc0b} 
+static bool {\bfseries write\+String\+To\+Binary} (const string \&str, ofstream \&out)
+\item 
+\Hypertarget{class_serializable_ad32d4851aabe4918388080bde4da1c1c}\label{class_serializable_ad32d4851aabe4918388080bde4da1c1c} 
+static bool {\bfseries read\+String\+From\+Binary} (string \&str, ifstream \&in)
+\item 
+\Hypertarget{class_serializable_addbdb96a2be6af8e87fd6af633d66555}\label{class_serializable_addbdb96a2be6af8e87fd6af633d66555} 
+static \mbox{\hyperlink{class_serializable}{Serializable}} \texorpdfstring{$\ast$}{*} {\bfseries read\+Serializable} (ifstream \&in)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Serializable.\+h\item 
+Serializable.\+cpp\end{DoxyCompactItemize}

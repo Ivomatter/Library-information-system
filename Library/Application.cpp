@@ -76,7 +76,6 @@ void Application::loginCommand()
 		std::cout << "Already logged in!";
 		return;
 	}
-	int ch;
 	string user;
 	string password;
 
@@ -139,6 +138,9 @@ void Application::booksCommand(vector<string>& _command) {
 		return;
 	}
 	else if (_command[1] == "find") {
+		if (_command.size() < 4) {
+			std::cout << INSUFFICIENT_PARAMTETERS_MESSAGE;
+		}
 		findCommand(_command);
 	}
 	else
@@ -222,7 +224,7 @@ void Application::userCommand(vector<string>& command)
 		return;
 	}
 	else if (command[1] == "add") {
-		if (command.size() < 2) {
+		if (command.size() < 4) {
 			std::cout << INSUFFICIENT_PARAMTETERS_MESSAGE;
 			return;
 		}
@@ -234,11 +236,10 @@ void Application::userCommand(vector<string>& command)
 		temp->serialize(out);
 		std::cout << "Successfully added user!";
 	}
-	else if (command[1] == "remove") {
+	else if (command[1] == "remove" && command.size() > 2) {
 		UserRegister userRegister(_usersController.getItemList(), USERS_FILE);
 		userRegister.removeUser(command[2]);
-		_usersController.close();
-		_usersController.openFile(USERS_FILE);
+		_usersController.reopen();
 	}
 	else
 		showUnknownCommandPrompt();

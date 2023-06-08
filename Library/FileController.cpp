@@ -87,33 +87,6 @@ bool FileController::add(Serializable* newItem)
 	return true;
 }
 
-//bool FileController::setUserList(vector<User>& userList) const
-//{
-//	ifstream in(_fileName, std::ios::binary);
-//
-//	for (size_t i = 0; i < this->size(); ++i) {
-//		User temp;
-//		User::readUser(in, temp);
-//		userList.push_back(temp);
-//	}
-//
-//	in.close();
-//	return in.good();;
-//}
-
-bool FileController::setBookList(vector<Book>& bookList) const
-{
-	ifstream in(_fileName, std::ios::binary);
-
-	for (size_t i = 0; i < this->size(); ++i) {
-		Book temp;
-		Book::readBook(in, temp);
-		bookList.push_back(temp);
-	}
-
-	in.close();
-	return in.good();;
-}
 
 void FileController::showAll() const
 {

@@ -36,11 +36,11 @@ Book::Book(const string& author, const string& title, const string& genre, const
 	_id = id;
 }
 
-Book& Book::operator=(const Book& other)
-{
-	copy(other);
-	return *this;
-}
+//Book& Book::operator=(const Book& other)
+//{
+//	copy(other);
+//	return *this;
+//}
 
 bool Book::generateBooksFile(string fileName)
 {

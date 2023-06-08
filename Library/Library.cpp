@@ -1,3 +1,6 @@
+//Helper class that converts an ambiguous FileController class to an easy to work with vector<Book>
+
+
 #include "Library.h"
 #include <algorithm>
 
@@ -18,6 +21,7 @@ Library::Library(vector<Serializable*>& serializableVector, string fileName)
 
 void Library::findBook(vector<string> command)
 {
+	
 	string toFind = "";
 	for (size_t i = 3; i < command.size(); i++)
 	{

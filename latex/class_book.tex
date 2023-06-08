@@ -1,0 +1,163 @@
+\doxysection{Book Class Reference}
+\hypertarget{class_book}{}\label{class_book}\index{Book@{Book}}
+Inheritance diagram for Book\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_book}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_book_ae17d06690c9d69e5c1ef8307f9aadb7f}\label{class_book_ae17d06690c9d69e5c1ef8307f9aadb7f} 
+{\bfseries Book} (const string \&author, const string \&title, const string \&genre, const string \&desc)
+\item 
+\Hypertarget{class_book_aaed02695d5e7238a76d52f1a05d095f4}\label{class_book_aaed02695d5e7238a76d52f1a05d095f4} 
+{\bfseries Book} (const string \&author, const string \&title, const string \&genre, const string \&desc, const unsigned year, const vector$<$ string $>$ \&tags, const double rating, unsigned id)
+\item 
+\Hypertarget{class_book_a4a4926659f166535f24d426e9f0957e6}\label{class_book_a4a4926659f166535f24d426e9f0957e6} 
+\mbox{\hyperlink{class_book}{Book}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_book}{Book}} \&other)
+\item 
+bool \mbox{\hyperlink{class_book_aaf21ec22dadd3c47088468b65b4c5aed}{serialize}} (ofstream \&out) override final
+\item 
+bool \mbox{\hyperlink{class_book_a4bde6e23146a7fe1b2224ede3a795081}{deserialize}} (ifstream \&in) override final
+\item 
+void \mbox{\hyperlink{class_book_ac67a89b1fd78a367d7cc32267c2ccc08}{print\+Details}} () const override final
+\item 
+void \mbox{\hyperlink{class_book_a352c280361d8642edf25b1df137faa29}{print\+For\+All}} () const override final
+\item 
+bool \mbox{\hyperlink{class_book_a0589a18cbc638229cc2fb865c250d1e3}{check\+For\+Details}} (const unsigned id) const override final
+\item 
+string \mbox{\hyperlink{class_book_a25eb4abe86b6c4a188876a0ddbcb9b37}{get\+Name}} () override final
+\item 
+\Hypertarget{class_book_a357d171d5d7c90340ee91a137edf958f}\label{class_book_a357d171d5d7c90340ee91a137edf958f} 
+string {\bfseries get\+Author} () const
+\item 
+\Hypertarget{class_book_a6ace4ac1026bcbb79f503274173246a5}\label{class_book_a6ace4ac1026bcbb79f503274173246a5} 
+string {\bfseries get\+Title} () const
+\item 
+\Hypertarget{class_book_a4a02d5a8ff5176e413d2f70772055ec8}\label{class_book_a4a02d5a8ff5176e413d2f70772055ec8} 
+vector$<$ string $>$ {\bfseries get\+Tags} () const
+\item 
+void \mbox{\hyperlink{class_book_a34c9ef3162ba064a5f6c482d020247fc}{set\+All}} () override final
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_serializable_a361feae023f1de6890eb374e6edd0a01}\label{class_serializable_a361feae023f1de6890eb374e6edd0a01} 
+virtual bool {\bfseries serialize} (ofstream \&out)=0
+\item 
+\Hypertarget{class_serializable_afb0aa7e3ba5b305e4b428a96fdc628c4}\label{class_serializable_afb0aa7e3ba5b305e4b428a96fdc628c4} 
+virtual bool {\bfseries deserialize} (ifstream \&out)=0
+\item 
+\Hypertarget{class_serializable_afdabd994134f22ea91b41f38121b72ae}\label{class_serializable_afdabd994134f22ea91b41f38121b72ae} 
+virtual void {\bfseries print\+Details} () const =0
+\item 
+\Hypertarget{class_serializable_a07c68c8a449ce6b34118108a8a93caae}\label{class_serializable_a07c68c8a449ce6b34118108a8a93caae} 
+virtual void {\bfseries print\+For\+All} () const =0
+\item 
+\Hypertarget{class_serializable_ad8c872c96dda95d4c5e941fb09afed85}\label{class_serializable_ad8c872c96dda95d4c5e941fb09afed85} 
+virtual bool {\bfseries check\+For\+Details} (const unsigned id) const =0
+\item 
+\Hypertarget{class_serializable_a26eddbaa9a9023ba47fa6189eba41c30}\label{class_serializable_a26eddbaa9a9023ba47fa6189eba41c30} 
+virtual string {\bfseries get\+Name} ()=0
+\item 
+\Hypertarget{class_serializable_a3efd9fbcb63785f9a6907405de5051bf}\label{class_serializable_a3efd9fbcb63785f9a6907405de5051bf} 
+virtual void {\bfseries set\+All} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_book_ac257c36ec4d6574b9de3ca1447e05938}\label{class_book_ac257c36ec4d6574b9de3ca1447e05938} 
+static bool {\bfseries generate\+Books\+File} (string file\+Name)
+\item 
+\Hypertarget{class_book_adf709ea2949ffb28efe893d490088b09}\label{class_book_adf709ea2949ffb28efe893d490088b09} 
+static bool {\bfseries read\+Book} (ifstream \&in, \mbox{\hyperlink{class_book}{Book}} \&temp)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_serializable}{Serializable}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bfseries write\+String\+To\+Binary} (const string \&str, ofstream \&out)
+\item 
+static bool {\bfseries read\+String\+From\+Binary} (string \&str, ifstream \&in)
+\item 
+static \mbox{\hyperlink{class_serializable}{Serializable}} \texorpdfstring{$\ast$}{*} {\bfseries read\+Serializable} (ifstream \&in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_book_a0589a18cbc638229cc2fb865c250d1e3}\label{class_book_a0589a18cbc638229cc2fb865c250d1e3} 
+\index{Book@{Book}!checkForDetails@{checkForDetails}}
+\index{checkForDetails@{checkForDetails}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{checkForDetails()}{checkForDetails()}}
+{\footnotesize\ttfamily bool Book\+::check\+For\+Details (\begin{DoxyParamCaption}\item[{const unsigned}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_book_a4bde6e23146a7fe1b2224ede3a795081}\label{class_book_a4bde6e23146a7fe1b2224ede3a795081} 
+\index{Book@{Book}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily bool Book\+::deserialize (\begin{DoxyParamCaption}\item[{ifstream \&}]{in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_book_a25eb4abe86b6c4a188876a0ddbcb9b37}\label{class_book_a25eb4abe86b6c4a188876a0ddbcb9b37} 
+\index{Book@{Book}!getName@{getName}}
+\index{getName@{getName}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Book\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_book_ac67a89b1fd78a367d7cc32267c2ccc08}\label{class_book_ac67a89b1fd78a367d7cc32267c2ccc08} 
+\index{Book@{Book}!printDetails@{printDetails}}
+\index{printDetails@{printDetails}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{printDetails()}{printDetails()}}
+{\footnotesize\ttfamily void Book\+::print\+Details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_book_a352c280361d8642edf25b1df137faa29}\label{class_book_a352c280361d8642edf25b1df137faa29} 
+\index{Book@{Book}!printForAll@{printForAll}}
+\index{printForAll@{printForAll}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{printForAll()}{printForAll()}}
+{\footnotesize\ttfamily void Book\+::print\+For\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_book_aaf21ec22dadd3c47088468b65b4c5aed}\label{class_book_aaf21ec22dadd3c47088468b65b4c5aed} 
+\index{Book@{Book}!serialize@{serialize}}
+\index{serialize@{serialize}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily bool Book\+::serialize (\begin{DoxyParamCaption}\item[{ofstream \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+\Hypertarget{class_book_a34c9ef3162ba064a5f6c482d020247fc}\label{class_book_a34c9ef3162ba064a5f6c482d020247fc} 
+\index{Book@{Book}!setAll@{setAll}}
+\index{setAll@{setAll}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{setAll()}{setAll()}}
+{\footnotesize\ttfamily void Book\+::set\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_serializable}{Serializable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Book.\+h\item 
+Book.\+cpp\end{DoxyCompactItemize}

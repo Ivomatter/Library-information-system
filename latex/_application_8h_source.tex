@@ -1,0 +1,50 @@
+\doxysection{Application.\+h}
+\hypertarget{_application_8h_source}{}\label{_application_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}FileController.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Constants.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}SerializableFactory.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}UserRegister.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Library.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_application}{Application}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ vector<string>\ \_command;}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_file_controller}{FileController}}\ \_booksController;}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_file_controller}{FileController}}\ \_usersController;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_user}{User}}\ \_currentUser;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_isUserLoggedIn;}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_application}{Application}}()\ :\ \_booksController(BOOKS\_FILE),\ \_usersController(USERS\_FILE),\ \_isUserLoggedIn(\textcolor{keyword}{false})\ \{\};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ run();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ executeCommand();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ loginCommand();}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ logoutCommand();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ booksCommand(vector<string>\&\ command);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ helpCommand(vector<string>\&\ command);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ findCommand(vector<string>\&\ command);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ openCommand(vector<string>\&\ command);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ closeCommand();}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ saveAsCommand(vector<string>\&\ command);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ userCommand(vector<string>\&\ command);}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ showBooksInfo(\textcolor{keywordtype}{string}\ bookId);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ showUnknownCommandPrompt();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{string}\ getPass();}
+\DoxyCodeLine{00045\ \};}
+
+\end{DoxyCode}

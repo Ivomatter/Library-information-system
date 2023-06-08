@@ -1,13 +1,14 @@
 #pragma once
 
+
+//Base class to be inherited by all classes which have to support serialization
+
 #include <fstream>
 #include <string>
 
 using std::string;
 using std::ofstream;
 using std::ifstream;
-
-//const string FILE_NAME = "example.txt";
 
 class Serializable
 {

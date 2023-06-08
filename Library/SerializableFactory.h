@@ -1,4 +1,7 @@
 #pragma once
+
+//Factory helping to create FileControllers for any serializabe class
+
 #include <vector>
 #include <string>
 

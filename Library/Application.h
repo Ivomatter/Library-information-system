@@ -1,4 +1,13 @@
 #pragma once
+
+/*
+	Application class handling the front end of the application,
+	loading the files onto the memory and interacting with the lower level
+	via FileControllers
+
+*/
+
+
 #include <sstream>
 #include <cstdlib>
 
