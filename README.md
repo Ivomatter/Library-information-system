@@ -1,4 +1,4 @@
-# OOP Library Project
+# Library Information System
 An information storage system realizing a digital library database.
 
 Each book has an Author, Title, Genre, Short description, Year of publishing, as a unique identifier.
